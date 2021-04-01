@@ -1,6 +1,12 @@
 import java.io.*;
 public class NewRemind {
-    public static void newRemind() {
-        //test push
+    public NewRemind(String remindName, String reminder, int day, int month, int year) throws IOException, FileNotFoundException {
+        
+
+
+    }
+
+    public NewRemind(String remindName, String reminder, int day, int month, int year, String time) throws IOException, FileNotFoundException {
+        
     }
 }

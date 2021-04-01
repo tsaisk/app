@@ -1,0 +1,1 @@
+(event) (day)/(month)/(year) (time (formatted like 17:25))
