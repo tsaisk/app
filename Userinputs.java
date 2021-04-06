@@ -2,28 +2,38 @@ import java.util.Scanner;
 
 public class Userinputs
 {
-    public static void main (String[] args) 
-    {
-        Scanner scan = new Scanner(System.in);
-        int neworreview;
+    Scanner scan = new Scanner(System.in);
+    String fileName = "", event = "";
+    int day, month, year, hour, minute;
         
-        System.out.print("Welcome to Reminder! Please press 1 to Enter a New Event or 2 to View Upcoming Events!");
-        neworreview = scan.nextInt();
-
-        if (neworreview != 1 || neworreview != 2)
-        {    
-            System.out.println("Sorry, that is not a valid response. Please press 1 to Enter a New Event or 2 to View Upcoming Events!");
-            neworreview = scan.nextInt();
+        public String event() {
+            System.out.print("Please enter the name of the event.");
+            event = scan.nextLine();
+            return event;
         }
-        else 
-            if (neworreview == 1)
-            {
-                // call kyles code
-            }
-            else
-                if  (neworreview == 2)
-                {
-                // call kyles code #2 for saved events
-            }
-    }
+        
+        public Int month() {
+            System.out.print("Please enter the Month of the event.");
+            month = scan.nextInt();
+        }
+        
+        public Int day() {
+            System.out.print("Please enter the Day of the event.");
+            day = scan.nextInt();
+        }
+        
+        public Int year() {
+            System.out.print("Please enter the Year of the event.");
+            year = scan.nextInt();
+        }
+
+        public Int hour() {
+            System.out.print("Please enter the Hour of the event.");
+            hour = scan.nextInt();
+        }
+
+        public Int minute() {
+            System.out.print("Please enter the Minute of the event.");
+            minute = scan.nextInt();
+        }
 }
