@@ -1,13 +1,16 @@
-import javax.swing.*;  
+import javax.swing.*;
+
+import jdk.jfr.Description;
+
 import java.io.*;
 public class Interface {
     
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException, FileNotFoundException{
         createFrameHome();
     }
 
 
-    static void createFrameHome(){
+    static void createFrameHome() throws IOException, FileNotFoundException{
         JFrame frame=new JFrame();  
         frame.setSize(1000,1000);
 
@@ -15,14 +18,20 @@ public class Interface {
         currentEvents.setBounds(350,100,300, 100);  
         currentEvents.addActionListener((e)-> {
             frame.dispose();
-            createFrameNewEvents();
+            createFrameCurrentEvents();
         });
 
         JButton newEvents=new JButton("Create New Event");
         newEvents.setBounds(0,100,300, 100);
         newEvents.addActionListener((e)-> {
             frame.dispose();
-            createFrameNewEvents();
+            try {
+                createFrameNewEvents();
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         });
 
         JButton edit=new JButton("Edit");
@@ -46,13 +55,19 @@ public class Interface {
 
     static void createFrameNewEvents() throws IOException, FileNotFoundException{
         JFrame frame=new JFrame();  
-        JTextField year, month, day, hour, minute;
+        JTextField year, month, day, hour, minute, name, description;
         JButton add;
 
         frame.setSize(1000,1000);
         frame.setLayout(null);
         frame.setVisible(true);
         
+        name = new JTextField("Name of Event");
+        name.setBounds(250,550,150,20);
+
+        description = new JTextField("Description");
+        description.setBounds(550,550,150,20); 
+
         year = new JTextField("Year");
         year.setBounds(100,400,150,20); 
         
@@ -68,10 +83,16 @@ public class Interface {
         minute = new JTextField("Minute");
         minute.setBounds(700,400,150,20); 
         
-        add = new JButton();
-        add.setBounds(850,400,40,20); 
+        add = new JButton("Push");
+        add.setBounds(850,400,100,20); 
         add.addActionListener((e)->  {
-            NewRemind test = new NewRemind("Test", "This is a test", 1, 1, 22, 12, 24);
+            try {
+                pushDate(year.getText(), month.getText(), day.getText(), hour.getText(), minute.getText(), name.getText(), description.getText());
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         });
 
         frame.add(year);
@@ -80,8 +101,17 @@ public class Interface {
         frame.add(hour);
         frame.add(minute);
         frame.add(add);
+        frame.add(name);
+        frame.add(description);
+
         
     }
+
+    private static void pushDate(String year, String month, String day, String hour, String minute, String name, String description) throws IOException, FileNotFoundException{
+        NewRemind test = new NewRemind(name, description, Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year), Integer.parseInt(hour), Integer.parseInt(minute));
+    }
+    
+
 
     static void createFrameEdit(){
         JFrame frame=new JFrame();  
