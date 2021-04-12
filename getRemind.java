@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class getRemind {
 
-    public static String get(String eventName, String string) throws FileNotFoundException, IOException {
+    public static String get(String eventName, int times) throws FileNotFoundException, IOException {
         File file = new File ("reminders.md");
         Scanner fileScan = new Scanner(file);
         String text = "", findEvent;
@@ -11,7 +11,7 @@ public class getRemind {
         while (fileScan.hasNext()) {
             findEvent = fileScan.next();
             if (findEvent.equals(eventName)) {
-                for (int i = 0; i < string; i++) {
+                for (int i = 0; i < times; i++) {
                     findEvent = fileScan.next();
                 }
                 text = findEvent;
