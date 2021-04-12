@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class getRemind {
 
-    public static void get(String eventName, int times) throws FileNotFoundException, IOException {
+    public static String get(String eventName, int times) throws FileNotFoundException, IOException {
         File file = new File ("reminders.md");
         Scanner fileScan = new Scanner(file);
         String text = "", findEvent;
@@ -17,31 +17,31 @@ public class getRemind {
                 text = findEvent;
             }
         }
-        System.out.println(text);
+        return text;
     }
       
-    public static void getEvent(String eventName) throws FileNotFoundException, IOException {
-        get(eventName, 1);
+    public static String getEvent(String eventName) throws FileNotFoundException, IOException {
+        return get(eventName, 1);
     }
 
-    public static void getDay(String eventName) throws FileNotFoundException, IOException {
-        get(eventName, 2);
+    public static int getDay(String eventName) throws FileNotFoundException, IOException {
+        return Integer.parseInt(get(eventName, 2));
     }
     
-    public static void getMonth(String eventName) throws FileNotFoundException, IOException {
-        get(eventName, 3);
+    public static int getMonth(String eventName) throws FileNotFoundException, IOException {
+        return Integer.parseInt(get(eventName, 3));
     }
 
-    public static void getYear(String eventName) throws FileNotFoundException, IOException {
-        get(eventName, 4);
+    public static int getYear(String eventName) throws FileNotFoundException, IOException {
+        return Integer.parseInt(get(eventName, 4));
     }
 
-    public static void getHour(String eventName) throws FileNotFoundException, IOException {
-        get(eventName, 5);
+    public static int getHour(String eventName) throws FileNotFoundException, IOException {
+        return Integer.parseInt(get(eventName, 5));
     }
 
-    public static void getMinute(String eventName) throws FileNotFoundException, IOException {
-        get(eventName, 6);
+    public static int getMinute(String eventName) throws FileNotFoundException, IOException {
+        return Integer.parseInt(get(eventName, 6));
     }
 
 }
